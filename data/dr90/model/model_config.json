@@ -1,0 +1,6 @@
+{
+  "n_features": 5,
+  "horizon": 3,
+  "hidden_size": 64,
+  "n_classes": 3
+}

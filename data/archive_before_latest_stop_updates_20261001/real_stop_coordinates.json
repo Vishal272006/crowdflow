@@ -1,0 +1,237 @@
+{
+  "Parrys Corner": {
+    "lat": 13.0888351,
+    "lng": 80.2903703,
+    "matched_address": "Parrys Corner, Rajaji Salai, Ward 60, Zone 5 Royapuram, Chennai Corporation, Chennai, Tamil Nadu, 600009, India"
+  },
+  "R B I Parrys": {
+    "lat": 13.0843563,
+    "lng": 80.2885416,
+    "matched_address": "Reserve Bank of India, RBI Subway, Ward 60, Zone 5 Royapuram, Chennai Corporation, Chennai, Tamil Nadu, 600009, India"
+  },
+  "Secretariat": {
+    "lat": 13.0810225,
+    "lng": 80.2883335,
+    "matched_address": "Secretariat, Rajaji Salai, Ward 60, Zone 5 Royapuram, Chennai Corporation, Chennai, Tamil Nadu, 600009, India"
+  },
+  "War Memorial": {
+    "lat": 13.0734957,
+    "lng": 80.2856553,
+    "matched_address": "Victory War Memorial, Rajaji Salai, Ward 60, Zone 5 Royapuram, Chennai Corporation, Chennai, Tamil Nadu, 600009, India"
+  },
+  "Madras University": {
+    "lat": 13.066730108116719,
+    "lng": 80.28423416661062,
+    "matched_address": "(manually verified by user)"
+  },
+  "Marina Beach": {
+    "lat": 13.0532752,
+    "lng": 80.2833106,
+    "matched_address": "Marina Beach, Zone 9 Teynampet, Chennai Corporation, Chennai, Tamil Nadu, India"
+  },
+  "Kannagi Statue or Presidency College": {
+    "lat": 13.0590211,
+    "lng": 80.2813834,
+    "matched_address": "Presidency College, Chennai, Chepauk Railway Street, Ward 114, Zone 9 Teynampet, Chennai Corporation, Chennai, Tamil Nadu, 600005, India"
+  },
+  "City Centre or Kalyani Hospital": {
+    "lat": 13.044032865822533,
+    "lng": 80.27194250588222,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Royapettah Yellow Pages": {
+    "lat": 13.044643122859881,
+    "lng": 80.26856972428195,
+    "matched_address": "Royapettah, Zone 9 Teynampet, Chennai Corporation, Chennai, Tamil Nadu, 600014, India"
+  },
+  "Thiruvalluvar Statue": {
+    "lat": 13.041252618566887,
+    "lng": 80.26829470169412,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Luz Corner": {
+    "lat": 13.038806991106703,
+    "lng": 80.26775769264806,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Mylapore Tank": {
+    "lat": 13.03779390042595,
+    "lng": 80.26547155767642,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Mandaveli Market": {
+    "lat": 13.0299144,
+    "lng": 80.2667491,
+    "matched_address": "Mandaveli Market, RK Mutt Road, Ward 124, Zone 9 Teynampet, Chennai Corporation, Chennai, Tamil Nadu, 600004, India"
+  },
+  "Adyar Gate": {
+    "lat": 13.028665303622802,
+    "lng": 80.2496472838043,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Nandanam Park": {
+    "lat": 13.027457484575162,
+    "lng": 80.2448344605382,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Kotturpuram": {
+    "lat": 13.022568287331518,
+    "lng": 80.24220498088793,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Anna Centenary Library": {
+    "lat": 13.019139231119162,
+    "lng": 80.2416328901175,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "CLRI or IIT Madras": {
+    "lat": 13.007548259017646,
+    "lng": 80.23658233407187,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Anna University": {
+    "lat": 13.008631499076163,
+    "lng": 80.23136811985003,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Saidapet Court or Saidapet Depot": {
+    "lat": 13.010606017597636,
+    "lng": 80.22518223174015,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Chellammal College": {
+    "lat": 13.011875534693623,
+    "lng": 80.22200252581597,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Guindy B.T": {
+    "lat": 13.00818539402091,
+    "lng": 80.21339693563306,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Alandur Metro R.S": {
+    "lat": 13.004190451332779,
+    "lng": 80.20132583279589,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Alandur Depot": {
+    "lat": 12.9973185,
+    "lng": 80.1914662,
+    "matched_address": "Alandur MTC Depot, St. Thomas Mount Cantonment, Alandur, St.Thomas Mount-Pallavaram Cantonment Board, Alandur, Chennai, Tamil Nadu, India"
+  },
+  "Pallavaram": {
+    "lat": 12.969485210841356,
+    "lng": 80.1502465819522,
+    "matched_address": "Pallavaram, Siva Shankaran Street, Tirusulam, Alandur, Chennai, Tamil Nadu, 600043, India"
+  },
+  "Chromepet Ponds Company": {
+    "lat": 12.961994767080444,
+    "lng": 80.1459295127893,
+    "matched_address": "Adyar Anand Bhavan, Grand Southern Trunk Road, Chromepet, Chennai Corporation, Pallavaram, Chengalpattu, Tamil Nadu, 600044, India"
+  },
+  "Chromepet": {
+    "lat": 12.951322560889693,
+    "lng": 80.14035240426897,
+    "matched_address": "Adyar Anand Bhavan, Grand Southern Trunk Road, Chromepet, Chennai Corporation, Pallavaram, Chengalpattu, Tamil Nadu, 600044, India"
+  },
+  "Tambaram Sanatorium B.T": {
+    "lat": 12.941997597119936,
+    "lng": 80.13280415467402,
+    "matched_address": "Tambaram Sanatorium Manavalakalai Mandram (Temple of consciousness), 12, kamakotti nagar, Chitlapakkam, Chennai Corporation, Tambaram, Chengalpattu, Tamil Nadu, 600047, India"
+  },
+  "Irumbuliyur": {
+    "lat": 12.916870721208573,
+    "lng": 80.10686029729466,
+    "matched_address": "Major Mukund Varadharajan Road Flyover, Ward 188, Zone 14 Perungudi, Chennai Corporation, Sholinganallur, Chennai, Tamil Nadu, 600117, India"
+  },
+  "Perungalatgur Lake View Stop": {
+    "lat": 12.909729767444546,
+    "lng": 80.0990181377719,
+    "matched_address": "India Post - Tambaram West Sub Post Office, Tambaram - Mudichur - Sriperumbudur Road, Kannadapalayam, Chennai Corporation, Tambaram, Chengalpattu, Tamil Nadu, 600045, India"
+  },
+  "Vandalur Gate": {
+    "lat": 12.892379938926743,
+    "lng": 80.08581656058432,
+    "matched_address": "Major Mukund Varadharajan Salai, Vijaynagar, Ward 178, Zone 13 Adyar, Chennai Corporation, Chennai, Tamil Nadu, 600042, India"
+  },
+  "Triplicane Queen Marys College": {
+    "lat": 13.0449885,
+    "lng": 80.2784685,
+    "matched_address": "Queen Marys College, Kamarajar Salai, Mattankuppam, Ward 121, Zone 9 Teynampet, Chennai Corporation, Chennai, Tamil Nadu, 600005, India"
+  },
+  "B M Birla Planetarium": {
+    "lat": 13.010760318694654,
+    "lng": 80.24058253407318,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "St. Thomas Mount P.O": {
+    "lat": 13.0015621,
+    "lng": 80.1973055,
+    "matched_address": "Head Post Office - St. Thomas Mount, Grand Southern Trunk Road, St. Thomas Mount Cantonment, Alandur, St.Thomas Mount-Pallavaram Cantonment Board, Alandur, Chennai, Tamil Nadu, 600016, India"
+  },
+  "Meenambakkam International Airport": {
+    "lat": 12.986264522355297,
+    "lng": 80.1746899166406,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Thirusoolam National Airport": {
+    "lat": 12.979513659359585,
+    "lng": 80.16260428523019,
+    "matched_address": "(coordinates supplied by user)"
+  },
+  "Saravana Store Chromepet": {
+    "lat": 12.956237780512446,
+    "lng": 80.14333291523657,
+    "matched_address": "Adyar Anand Bhavan, Grand Southern Trunk Road, Chromepet, Chennai Corporation, Pallavaram, Chengalpattu, Tamil Nadu, 600044, India"
+  },
+  "Tambaram TB Hospital": {
+    "lat": 12.94429797126512,
+    "lng": 80.13481044697748,
+    "matched_address": "Tambaram Sanatorium Manavalakalai Mandram (Temple of consciousness), 12, kamakotti nagar, Chitlapakkam, Chennai Corporation, Tambaram, Chengalpattu, Tamil Nadu, 600047, India"
+  },
+  "Tambaram West Bus Stand": {
+    "lat": 12.928756783316945,
+    "lng": 80.11956392427982,
+    "matched_address": "India Post - Tambaram West Sub Post Office, Tambaram - Mudichur - Sriperumbudur Road, Kannadapalayam, Chennai Corporation, Tambaram, Chengalpattu, Tamil Nadu, 600045, India"
+  },
+  "Perungalattur": {
+    "lat": 12.897886524774028,
+    "lng": 80.08979908009997,
+    "matched_address": "India Post - Tambaram West Sub Post Office, Tambaram - Mudichur - Sriperumbudur Road, Kannadapalayam, Chennai Corporation, Tambaram, Chengalpattu, Tamil Nadu, 600045, India"
+  },
+  "Vivekananda House Bus Terminus": {
+    "lat": 13.05452,
+    "lng": 80.274223,
+    "matched_address": "(manually entered)"
+  },
+  "DGP Office": {
+    "lat": 13.0456,
+    "lng": 80.2778,
+    "matched_address": "(manually entered)"
+  },
+  "Chromepet MIT Gate": {
+    "lat": 12.951568643254996,
+    "lng": 80.14032210284812,
+    "matched_address": "(manually entered)"
+  },
+  "Kadaperi": {
+    "lat": 12.937176117393332,
+    "lng": 80.12810691078747,
+    "matched_address": "(manually entered)"
+  },
+  "Perungalathur Iraniyamman Temple": {
+    "lat": 12.906150393370016,
+    "lng": 80.09624627030959,
+    "matched_address": "(manually entered)"
+  },
+  "Vandalur Zoo": {
+    "lat": 12.88273,
+    "lng": 80.08183,
+    "matched_address": "(manually entered)"
+  },
+  "Kilambakkam Bus Terminus": {
+    "lat": 12.871897,
+    "lng": 80.080828,
+    "matched_address": "(manually entered)"
+  }
+}

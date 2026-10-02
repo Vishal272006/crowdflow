@@ -1,0 +1,28 @@
+{
+  "No departure delay": {
+    "mean_reward": -0.6543363621261097,
+    "mean_ahead_ratio": 0.3872949592470982,
+    "mean_behind_ratio": 0.4855298234163845,
+    "mean_departure_delay_seconds": 0.0,
+    "pct_cases_ahead_high_risk": 32.20338983050847,
+    "pct_cases_behind_high_risk": 26.08286252354049
+  },
+  "Fixed departure rule": {
+    "mean_reward": -0.6542027667897057,
+    "mean_ahead_ratio": 0.3859429940100752,
+    "mean_behind_ratio": 0.4872314307344078,
+    "mean_departure_delay_seconds": 0.11299435028248588,
+    "pct_cases_ahead_high_risk": 32.20338983050847,
+    "pct_cases_behind_high_risk": 26.08286252354049
+  },
+  "RL departure controller": {
+    "mean_reward": -0.6543363621261097,
+    "mean_ahead_ratio": 0.3872949592470982,
+    "mean_behind_ratio": 0.4855298234163845,
+    "mean_departure_delay_seconds": 0.0,
+    "pct_cases_ahead_high_risk": 32.20338983050847,
+    "pct_cases_behind_high_risk": 26.08286252354049
+  },
+  "rl_ahead_improvement_pct_vs_no_delay": 0.0,
+  "rl_behind_improvement_pct_vs_no_delay": 0.0
+}

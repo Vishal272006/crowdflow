@@ -1,0 +1,12 @@
+{
+  "window": 5,
+  "horizon": 3,
+  "feature_cols": [
+    "headway_deviation_min",
+    "n_boarding",
+    "dwell_sec",
+    "hour_of_day",
+    "headway_scheduled_min"
+  ],
+  "n_stops": 47
+}

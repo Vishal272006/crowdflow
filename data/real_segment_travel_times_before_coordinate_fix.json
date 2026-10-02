@@ -1,0 +1,290 @@
+{
+  "Parrys Corner -> R B I Parrys": {
+    "13": {
+      "duration_sec": 109.0,
+      "distance_m": 1372.8
+    }
+  },
+  "R B I Parrys -> Secretariat": {
+    "13": {
+      "duration_sec": 98.0,
+      "distance_m": 763.5
+    }
+  },
+  "Secretariat -> War Memorial": {
+    "13": {
+      "duration_sec": 143.5,
+      "distance_m": 1817.1
+    }
+  },
+  "War Memorial -> Madras University": {
+    "13": {
+      "duration_sec": 1146.0,
+      "distance_m": 12300.1
+    }
+  },
+  "Madras University -> Marina Beach": {
+    "13": {
+      "duration_sec": 1092.7,
+      "distance_m": 11041.9
+    }
+  },
+  "Marina Beach -> Kannagi Statue or Presidency College": {
+    "13": {
+      "duration_sec": 110.8,
+      "distance_m": 686.6
+    }
+  },
+  "Kannagi Statue or Presidency College -> Vivekananda House Bus Terminus": {
+    "13": {
+      "duration_sec": 173.0,
+      "distance_m": 2383.4
+    }
+  },
+  "Vivekananda House Bus Terminus -> Triplicane Queen Marys College": {
+    "13": {
+      "duration_sec": 164.0,
+      "distance_m": 2047.3
+    }
+  },
+  "Triplicane Queen Marys College -> DGP Office": {
+    "13": {
+      "duration_sec": 78.9,
+      "distance_m": 674.8
+    }
+  },
+  "DGP Office -> City Centre or Kalyani Hospital": {
+    "13": {
+      "duration_sec": 183.9,
+      "distance_m": 2325.6
+    }
+  },
+  "City Centre or Kalyani Hospital -> Royapettah Yellow Pages": {
+    "13": {
+      "duration_sec": 0.0,
+      "distance_m": 0.0
+    }
+  },
+  "Royapettah Yellow Pages -> Thiruvalluvar Statue": {
+    "13": {
+      "duration_sec": 685.3,
+      "distance_m": 9357.3
+    }
+  },
+  "Thiruvalluvar Statue -> Luz Corner": {
+    "13": {
+      "duration_sec": 529.7,
+      "distance_m": 6512.5
+    }
+  },
+  "Luz Corner -> Mylapore Tank": {
+    "13": {
+      "duration_sec": 249.1,
+      "distance_m": 2160.1
+    }
+  },
+  "Mylapore Tank -> Mandaveli Market": {
+    "13": {
+      "duration_sec": 101.1,
+      "distance_m": 447.4
+    }
+  },
+  "Mandaveli Market -> Adyar Gate": {
+    "13": {
+      "duration_sec": 274.7,
+      "distance_m": 2553.2
+    }
+  },
+  "Adyar Gate -> Nandanam Park": {
+    "13": {
+      "duration_sec": 301.2,
+      "distance_m": 2497.0
+    }
+  },
+  "Nandanam Park -> Kotturpuram": {
+    "13": {
+      "duration_sec": 421.0,
+      "distance_m": 3513.8
+    }
+  },
+  "Kotturpuram -> Kottur": {
+    "13": {
+      "duration_sec": 75.5,
+      "distance_m": 514.1
+    }
+  },
+  "Kottur -> Anna Centenary Library": {
+    "13": {
+      "duration_sec": 43.0,
+      "distance_m": 493.2
+    }
+  },
+  "Anna Centenary Library -> B M Birla Planetarium": {
+    "13": {
+      "duration_sec": 196.7,
+      "distance_m": 1404.7
+    }
+  },
+  "B M Birla Planetarium -> CLRI or IIT Madras": {
+    "13": {
+      "duration_sec": 690.4,
+      "distance_m": 3633.8
+    }
+  },
+  "CLRI or IIT Madras -> Anna University": {
+    "13": {
+      "duration_sec": 641.0,
+      "distance_m": 3771.4
+    }
+  },
+  "Anna University -> Saidapet Court or Saidapet Depot": {
+    "13": {
+      "duration_sec": 383.3,
+      "distance_m": 3096.9
+    }
+  },
+  "Saidapet Court or Saidapet Depot -> Chellammal College": {
+    "13": {
+      "duration_sec": 214.0,
+      "distance_m": 3190.6
+    }
+  },
+  "Chellammal College -> Guindy B.T": {
+    "13": {
+      "duration_sec": 235.3,
+      "distance_m": 3249.5
+    }
+  },
+  "Guindy B.T -> Alandur Metro R.S": {
+    "13": {
+      "duration_sec": 110.4,
+      "distance_m": 1617.8
+    }
+  },
+  "Alandur Metro R.S -> St. Thomas Mount P.O": {
+    "13": {
+      "duration_sec": 48.6,
+      "distance_m": 662.1
+    }
+  },
+  "St. Thomas Mount P.O -> Alandur Depot": {
+    "13": {
+      "duration_sec": 35.0,
+      "distance_m": 822.8
+    }
+  },
+  "Alandur Depot -> Meenambakkam International Airport": {
+    "13": {
+      "duration_sec": 263.3,
+      "distance_m": 4681.1
+    }
+  },
+  "Meenambakkam International Airport -> Thirusoolam National Airport": {
+    "13": {
+      "duration_sec": 188.3,
+      "distance_m": 2787.5
+    }
+  },
+  "Thirusoolam National Airport -> Pallavaram or English Electrical": {
+    "13": {
+      "duration_sec": 226.0,
+      "distance_m": 2315.5
+    }
+  },
+  "Pallavaram or English Electrical -> Pallavaram": {
+    "13": {
+      "duration_sec": 0.0,
+      "distance_m": 0.0
+    }
+  },
+  "Pallavaram -> Chromepet Ponds Company": {
+    "13": {
+      "duration_sec": 259.2,
+      "distance_m": 2124.7
+    }
+  },
+  "Chromepet Ponds Company -> Saravana Store Chromepet": {
+    "13": {
+      "duration_sec": 0.0,
+      "distance_m": 0.0
+    }
+  },
+  "Saravana Store Chromepet -> Chromepet": {
+    "13": {
+      "duration_sec": 0.0,
+      "distance_m": 0.0
+    }
+  },
+  "Chromepet -> Chromepet MIT Gate": {
+    "13": {
+      "duration_sec": 495.7,
+      "distance_m": 3948.4
+    }
+  },
+  "Chromepet MIT Gate -> Tambaram TB Hospital": {
+    "13": {
+      "duration_sec": 508.2,
+      "distance_m": 4366.5
+    }
+  },
+  "Tambaram TB Hospital -> Tambaram Sanatorium B.T": {
+    "13": {
+      "duration_sec": 0.0,
+      "distance_m": 0.0
+    }
+  },
+  "Tambaram Sanatorium B.T -> Kadaperi": {
+    "13": {
+      "duration_sec": 291.1,
+      "distance_m": 2670.1
+    }
+  },
+  "Kadaperi -> Tambaram West Bus Stand": {
+    "13": {
+      "duration_sec": 98.3,
+      "distance_m": 1478.0
+    }
+  },
+  "Tambaram West Bus Stand -> Irumbuliyur": {
+    "13": {
+      "duration_sec": 1066.4,
+      "distance_m": 15453.5
+    }
+  },
+  "Irumbuliyur -> Perungalatgur Lake View Stop": {
+    "13": {
+      "duration_sec": 786.9,
+      "distance_m": 13963.7
+    }
+  },
+  "Perungalatgur Lake View Stop -> Perungalattur": {
+    "13": {
+      "duration_sec": 0.0,
+      "distance_m": 0.0
+    }
+  },
+  "Perungalattur -> Perungalathur Iraniyamman Temple": {
+    "13": {
+      "duration_sec": 257.7,
+      "distance_m": 4604.8
+    }
+  },
+  "Perungalathur Iraniyamman Temple -> Vandalur Gate": {
+    "13": {
+      "duration_sec": 1483.1,
+      "distance_m": 18923.5
+    }
+  },
+  "Vandalur Gate -> Vandalur Zoo": {
+    "13": {
+      "duration_sec": 1413.4,
+      "distance_m": 22510.2
+    }
+  },
+  "Vandalur Zoo -> Kilambakkam Bus Terminus": {
+    "13": {
+      "duration_sec": 226.1,
+      "distance_m": 1435.5
+    }
+  }
+}

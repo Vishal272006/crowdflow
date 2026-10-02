@@ -1,0 +1,28 @@
+{
+  "No-Hold (status quo)": {
+    "mean_reward": -33.51949269864175,
+    "mean_ahead_ratio": 0.4325780328256367,
+    "mean_behind_ratio": 0.5383756201052351,
+    "mean_hold_seconds": 0.0,
+    "pct_episodes_ahead_high_risk": 35.6497175141243,
+    "pct_episodes_behind_high_risk": 28.87005649717514
+  },
+  "Fixed-Rule (ahead-only)": {
+    "mean_reward": -30.92955294648947,
+    "mean_ahead_ratio": 0.3409219346983485,
+    "mean_behind_ratio": 0.5867397957202121,
+    "mean_hold_seconds": 3.501105379513633,
+    "pct_episodes_ahead_high_risk": 20.0,
+    "pct_episodes_behind_high_risk": 37.11864406779661
+  },
+  "RL Agent (PPO, both neighbors)": {
+    "mean_reward": -31.286003292440505,
+    "mean_ahead_ratio": 0.4036516441414477,
+    "mean_behind_ratio": 0.48959093056481573,
+    "mean_hold_seconds": 2.8815401621223287,
+    "pct_episodes_ahead_high_risk": 34.18079096045198,
+    "pct_episodes_behind_high_risk": 27.796610169491526
+  },
+  "rl_improvement_pct_vs_no_hold": 6.686975872362118,
+  "rl_behind_change_pct_vs_no_hold": 9.061459642411656
+}

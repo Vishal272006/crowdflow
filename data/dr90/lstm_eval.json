@@ -1,0 +1,29 @@
+{
+  "regression": [
+    {
+      "horizon": 1,
+      "lstm_mae": 0.4114200472831726,
+      "persistence_mae": 0.5449346899986267,
+      "improvement_pct": 24.501035659115512
+    },
+    {
+      "horizon": 2,
+      "lstm_mae": 0.6169700026512146,
+      "persistence_mae": 0.9114544987678528,
+      "improvement_pct": 32.30929207269658
+    },
+    {
+      "horizon": 3,
+      "lstm_mae": 0.8025028109550476,
+      "persistence_mae": 1.2457830905914307,
+      "improvement_pct": 35.58246078183141
+    }
+  ],
+  "classification": {
+    "lstm_accuracy": 0.9344076356788221,
+    "persistence_accuracy": 0.9279803686583348,
+    "always_low_accuracy": 0.6968698282257604,
+    "lstm_high_risk_recall": 0.9519684484822875,
+    "persistence_high_risk_recall": 0.8210437354743292
+  }
+}

@@ -162,20 +162,77 @@ def load_trip_risk_summary():
     ])
 
 
-st.title("🚌 CrowdFlow -- MTC Route 21G Simulated Dispatch Monitor")
-st.caption("Parrys Corner → Kilambakkam | One departure decision at Parrys Corner, then prediction-only monitoring. "
-           "running on held-out simulated trips the models never trained on.")
+st.set_page_config(page_title="CrowdFlow Dashboard", layout="wide")
+
+st.markdown(
+    """
+    <style>
+    .main {
+        background: linear-gradient(180deg, #071a2c 0%, #0d2137 100%);
+    }
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    div[data-testid="stSidebar"] {
+        background: rgba(11, 25, 38, 0.95);
+    }
+    .stMetric > div {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        padding: 0.8rem 1rem;
+        border-radius: 0.8rem;
+    }
+    .metric-label {
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #a9c3d9;
+    }
+    .metric-value {
+        font-size: 1.7rem;
+        font-weight: 700;
+    }
+    .glass-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1rem;
+        padding: 1rem 1.1rem;
+    }
+    .section-header {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    .badge {
+        display: inline-block;
+        padding: 0.3rem 0.6rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.72rem;
+    }
+    .badge-low { background: rgba(46, 160, 67, 0.18); color: #7ed995; }
+    .badge-medium { background: rgba(230, 180, 30, 0.16); color: #f5d66d; }
+    .badge-high { background: rgba(200, 40, 40, 0.18); color: #ff8d8d; }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.title("🚍 CrowdFlow")
+st.caption("MTC Route 21G | Bus bunching monitor and dispatch planner")
 
 engine = load_engine()
 trips = load_val_trips()
 planner_scenario = load_planner_scenario()
 trip_risk_summary = load_trip_risk_summary()
 
-col1, col2 = st.columns([1, 3])
-with col1:
+with st.sidebar:
+    st.header("Filters")
     trip_filter = st.radio(
-        "Show trips",
+        "Trip list",
         options=["All trips", "Trips with Medium or High risk", "Trips with High risk"],
+        horizontal=False,
     )
 
     if trip_filter == "Trips with Medium or High risk":
@@ -195,11 +252,11 @@ with col1:
     }
 
     selected = st.selectbox(
-        "Choose a bus trip",
+        "Choose a trip",
         options=trip_keys,
         format_func=lambda k: (
             f"Day {k[0]}, Bus #{k[1]} — "
-            f"{risk_counts[k][1]} High, {risk_counts[k][0]} Medium predictions"
+            f"{risk_counts[k][1]} High / {risk_counts[k][0]} Medium"
         ),
         index=0,
     )
@@ -209,19 +266,15 @@ departure_plan = planner_scenario[selected[1]]
 feats = trip[FEATURE_COLS].to_numpy(dtype=np.float32)
 stop_names = trip["stop_name"].tolist()
 actual_dev = trip["headway_deviation_min"].to_numpy()
-sched_headway = trip["headway_scheduled_min"].to_numpy()
 
 rows = []
 pred_1step = [np.nan] * N_STOPS
-
 for i in range(0, N_STOPS - 3):
     window = get_window(feats, i)
     window_dicts = [dict(zip(FEATURE_COLS, r)) for r in window]
     pred = engine.predict_bunching(window_dicts)
-
     pred_1step[i + 1] = pred["predicted_deviation_min"][0]
     risk = pred["risk_class"][0]
-
     rows.append({
         "Stop": stop_names[i],
         "Actual Deviation (min)": round(float(actual_dev[i]), 2),
@@ -230,107 +283,130 @@ for i in range(0, N_STOPS - 3):
     })
 
 results_df = pd.DataFrame(rows)
+selected_medium, selected_high = risk_counts[selected]
 
-with col2:
-    fig, ax = plt.subplots(figsize=(8, 3.5))
-    ax.plot(range(N_STOPS), actual_dev, marker='o', label='Actual deviation', color='#c0392b')
-    ax.plot(range(N_STOPS), pred_1step, marker='x', linestyle='--',
-            label='LSTM 1-step-ahead prediction', color='#2b4c7e')
-    ax.axhline(0, color='gray', linewidth=0.7)
-    ax.set_xlabel("Stop index")
-    ax.set_ylabel("Headway deviation (min)")
-    ax.legend()
+st.markdown("<div class='section-header'>Trip overview</div>", unsafe_allow_html=True)
+
+col1, col2, col3, col4 = st.columns(4)
+col1.metric("High risk stops", int((results_df["Predicted Risk (next stop)"] == "High").sum()))
+col2.metric("Medium risk stops", int((results_df["Predicted Risk (next stop)"] == "Medium").sum()))
+col3.metric("Scheduled departure", clock_time(departure_plan["scheduled_departure_min"]))
+col4.metric("Recommended departure", clock_time(departure_plan["recommended_departure_min"]))
+
+info_col, risk_col = st.columns([2, 1])
+with info_col:
+    st.markdown(
+        f"""
+        <div class='glass-card'>
+            <div class='section-header'>Selected trip</div>
+            <strong>Day {selected[0]}</strong> · Bus #{selected[1]}<br>
+            Route: Parrys Corner → Kilambakkam<br>
+            Forecast risk summary: {selected_high} high, {selected_medium} medium
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with risk_col:
+    if departure_plan["is_safe"]:
+        st.success(f"Safe departure window: {departure_plan['minimum_safe_gap_min']:.1f} min minimum gap")
+    else:
+        st.warning("Planner could not find a fully safe departure within the default search range")
+
+if departure_plan["warning"]:
+    st.warning(departure_plan["warning"])
+
+# Chart + table tabs
+chart_tab, details_tab, map_tab = st.tabs(["Forecast trend", "Stop-level details", "Route map"])
+
+with chart_tab:
+    fig, ax = plt.subplots(figsize=(10, 4.2), facecolor="#0d2137")
+    ax.plot(range(N_STOPS), actual_dev, marker='o', label='Actual deviation', color='#ff6b6b', linewidth=2.3)
+    ax.plot(range(N_STOPS), pred_1step, marker='x', linestyle='--', label='LSTM 1-step prediction', color='#5fb3ff', linewidth=2)
+    ax.axhline(0, color='white', linewidth=0.8, alpha=0.7)
+    ax.set_xlabel("Stop index", color='white')
+    ax.set_ylabel("Headway deviation (min)", color='white')
+    ax.tick_params(colors='white')
+    ax.grid(alpha=0.18)
+    ax.legend(frameon=False, fontsize=9)
+    for spine in ax.spines.values():
+        spine.set_color('#b7d1eb')
+    fig.tight_layout()
     st.pyplot(fig)
 
-def highlight_risk(row):
-    color = {"Low": "", "Medium": "background-color: #fff3cd",
-             "High": "background-color: #f8d7da"}[row["Predicted Risk (next stop)"]]
-    return [color] * len(row)
+with details_tab:
+    def highlight_risk(row):
+        color = {
+            "Low": "background-color: rgba(46, 160, 67, 0.18); color: #d9fdd6",
+            "Medium": "background-color: rgba(230, 180, 30, 0.18); color: #ffe9a6",
+            "High": "background-color: rgba(200, 40, 40, 0.18); color: #ffd8d8",
+        }[row["Predicted Risk (next stop)"]]
+        return [color] * len(row)
 
-st.subheader(f"Stop-by-stop: Day {selected[0]}, Bus #{selected[1]}")
-selected_medium, selected_high = risk_counts[selected]
-st.caption(
-    f"For this trip, the LSTM predicts {selected_high} High-risk and "
-    f"{selected_medium} Medium-risk next-stop events."
-)
-st.dataframe(results_df.style.apply(highlight_risk, axis=1), use_container_width=True, height=500)
-
-n_high = (results_df["Predicted Risk (next stop)"] == "High").sum()
-c1, c2, c3, c4 = st.columns(4)
-c1.metric("Stops flagged High Risk", int(n_high))
-c2.metric("Scheduled departure", clock_time(departure_plan["scheduled_departure_min"]))
-c3.metric("Recommended departure", clock_time(departure_plan["recommended_departure_min"]))
-c4.metric("Closest projected gap", f"{departure_plan['closest_gap_min']:.1f} min")
-if departure_plan["recommended_delay_seconds"] == 0:
-    st.caption("Decision: Depart now. The scheduled start time is already safe.")
-else:
-    st.caption(
-        f"Recommended wait: {departure_plan['recommended_delay_seconds']} seconds after the scheduled departure."
+    st.dataframe(
+        results_df.style.apply(highlight_risk, axis=1),
+        use_container_width=True,
+        height=420,
+        hide_index=True,
     )
+
+with map_tab:
+    real_coords = load_real_coordinates()
+    if real_coords is None:
+        st.info(
+            "No real stop coordinates found. Run the geocoding calibration to enable the live route map."
+        )
+    else:
+        RISK_COLOR = {"Low": [46, 160, 67], "Medium": [230, 180, 30], "High": [200, 40, 40]}
+        map_rows = []
+        for row in rows:
+            name = row["Stop"]
+            if name not in real_coords:
+                continue
+            map_rows.append({
+                "name": name,
+                "lat": real_coords[name]["lat"],
+                "lon": real_coords[name]["lng"],
+                "risk": row["Predicted Risk (next stop)"],
+                "color": RISK_COLOR[row["Predicted Risk (next stop)"]],
+            })
+        map_df = pd.DataFrame(map_rows)
+        path_coords = [[real_coords[n]["lng"], real_coords[n]["lat"]] for n in stop_names if n in real_coords]
+
+        if map_df.empty:
+            st.warning("No mapped stop coordinates matched the selected trip route.")
+        else:
+            layers = [
+                pdk.Layer("PathLayer", data=[{"path": path_coords}], get_path="path", get_color=[130, 130, 130], width_min_pixels=3),
+                pdk.Layer("ScatterplotLayer", data=map_df, get_position=["lon", "lat"], get_fill_color="color", get_radius=120, pickable=True),
+            ]
+            view_state = pdk.ViewState(latitude=map_df["lat"].mean(), longitude=map_df["lon"].mean(), zoom=10.2)
+            st.pydeck_chart(pdk.Deck(layers=layers, initial_view_state=view_state, tooltip={"text": "{name}\nRisk: {risk}"}, map_style="road"))
+
+st.markdown("<div class='section-header'>Departure recommendation</div>", unsafe_allow_html=True)
+
+planner_cols = st.columns(4)
+planner_cols[0].metric("Scheduled departure", clock_time(departure_plan["scheduled_departure_min"]))
+planner_cols[1].metric("Recommended delay", f"{departure_plan['recommended_delay_seconds']} sec")
+planner_cols[2].metric("Recommended departure", clock_time(departure_plan["recommended_departure_min"]))
+planner_cols[3].metric("Closest projected gap", f"{departure_plan['closest_gap_min']:.1f} min")
+
+if departure_plan["recommended_delay_seconds"] == 0:
+    st.caption("Decision: depart now — the scheduled departure is already safe.")
+else:
+    st.caption(f"Recommended wait: {departure_plan['recommended_delay_seconds']} seconds after the scheduled departure.")
+
 if departure_plan["warning"]:
     st.warning(departure_plan["warning"])
 elif departure_plan["is_safe"]:
     st.success(
-        f"This start time keeps the new bus at least {departure_plan['minimum_safe_gap_min']:.1f} minutes "
-        "behind the previous bus throughout the projected route."
+        f"This start time keeps the next bus at least {departure_plan['minimum_safe_gap_min']:.1f} minutes "
+        "behind the previous bus across the projected route."
     )
-st.info(
-    f"Departure-planner scenario: Bus #{selected[1]} is projected to be closest to the prior bus near "
-    f"{departure_plan['closest_stop_name']}. The planner compares every allowed start time "
-    "at Parrys Corner, then makes this one decision. No intermediate-stop holding is used."
-)
-st.caption(
-    "The chart and stop table use the selected held-out historical simulation trip. "
-    "The departure panel uses a separate fresh simulation so it can compare counterfactual start times."
-)
-with st.expander("Why this departure time?"):
+
+with st.expander("Counterfactual departure candidates"):
     st.dataframe(pd.DataFrame(departure_plan["candidates"]), use_container_width=True, hide_index=True)
 
-# --- Real map (only shown if calibration/geocode_stops.py has been run) ---
-real_coords = load_real_coordinates()
-st.subheader("Route Map")
-if real_coords is None:
-    st.info(
-        "No real stop coordinates found. Run `calibration/geocode_stops.py` with a "
-        "Google Maps API key to unlock a real map view here (see README section 10)."
-    )
-else:
-    RISK_COLOR = {"Low": [46, 160, 67], "Medium": [230, 180, 30], "High": [200, 40, 40]}
-    map_rows = []
-    for i, row in enumerate(rows):
-        name = row["Stop"]
-        if name not in real_coords:
-            continue
-        map_rows.append({
-            "name": name,
-            "lat": real_coords[name]["lat"],
-            "lon": real_coords[name]["lng"],
-            "risk": row["Predicted Risk (next stop)"],
-            "color": RISK_COLOR[row["Predicted Risk (next stop)"]],
-        })
-    map_df = pd.DataFrame(map_rows)
-
-    path_coords = [[real_coords[n]["lng"], real_coords[n]["lat"]]
-                   for n in stop_names if n in real_coords]
-
-    if not map_df.empty:
-        layers = [
-            pdk.Layer("PathLayer", data=[{"path": path_coords}], get_path="path",
-                      get_color=[100, 100, 100], width_min_pixels=3),
-            pdk.Layer("ScatterplotLayer", data=map_df,
-                      get_position=["lon", "lat"], get_fill_color="color",
-                      get_radius=120, pickable=True),
-        ]
-        view_state = pdk.ViewState(
-            latitude=map_df["lat"].mean(), longitude=map_df["lon"].mean(),
-            zoom=10.5,
-        )
-        st.pydeck_chart(pdk.Deck(
-            layers=layers, initial_view_state=view_state,
-            tooltip={"text": "{name}\nRisk: {risk}"},
-            map_style="road",
-        ))
-        st.caption("Marker color = predicted bunching risk at that stop for this trip "
-                   "(green=Low, yellow=Medium, red=High). Coordinates from Google Geocoding API.")
-    else:
-        st.warning("Real coordinates file exists but none matched this route's stop names.")
+st.caption(
+    "This dashboard compares actual trip behavior with LSTM next-stop predictions and a fresh departure-planning simulation."
+)

@@ -23,6 +23,8 @@ Thumbs.db
 *.pt
 *.zip
 *.npz
+!data/dr90/model/best_model.pt
+!data/dr90/model/scaler.npz
 
 # Keep project data tracked if desired
 # data/

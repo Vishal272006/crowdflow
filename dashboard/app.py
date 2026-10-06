@@ -2,6 +2,7 @@
 
 import json
 import os
+import secrets
 import sys
 
 import pandas as pd
@@ -60,9 +61,9 @@ def load_real_coordinates():
     }
 
 
-@st.cache_data(show_spinner="Building an example service-day plan...")
-def load_planner_scenario(seed=999):
-    """Return advisory dispatch choices for one generated service-day scenario."""
+@st.cache_data(show_spinner="Simulating a new service day...")
+def load_planner_scenario(seed):
+    """Return advisory dispatch choices for one randomized service day."""
     planner = BusDispatchEnv(seed=seed)
     planner.reset()
     decisions = {}
@@ -246,16 +247,24 @@ def render_rider_guide():
 def render_dispatch_planner():
     st.subheader("Dispatch planning")
     st.write(
-        "Review a modeled departure recommendation and compare it with "
-        "alternative start times."
+        "Generate a service-day scenario from the Route 21G timetable and "
+        "the traffic and passenger assumptions used in this project’s "
+        "simulated trip history."
     )
     st.warning(
-        "Planning aid, not a live control system. These results are generated "
-        "from a simulated service day; they do not use current MTC bus "
-        "positions or traffic conditions. Verify against operations before acting."
+        "This project contains synthetic trip history, not observed MTC "
+        "operations data. Recommendations are simulated planning examples, "
+        "not live dispatch instructions; they do not use current bus positions "
+        "or traffic conditions."
     )
 
-    scenario = load_planner_scenario()
+    if "dispatch_scenario_seed" not in st.session_state:
+        st.session_state.dispatch_scenario_seed = secrets.randbits(32)
+
+    if st.button("Generate a new simulated day", type="primary"):
+        st.session_state.dispatch_scenario_seed = secrets.randbits(32)
+
+    scenario = load_planner_scenario(st.session_state.dispatch_scenario_seed)
     bus_ids = sorted(scenario)
     bus_id = st.selectbox(
         "Bus in the example service day",
